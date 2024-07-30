@@ -3,6 +3,9 @@ from tkinter import Tk, StringVar, ttk
 
 from PIL import Image, ImageTk
 
+from tkcalendar import Calendar, DateEntry
+from datetime import date
+
 # Cores
 
 co0 = "#2e2d2b"  # Preta
