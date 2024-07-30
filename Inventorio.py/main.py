@@ -80,14 +80,32 @@ e_model.place(x=130, y=101)
 
 l_cal = Label(frameMeio, text="Data da compra", height=1, anchor=NW, font=('Ivy 10 bold'), bg=co1, fg=co4)
 l_cal.place(x=10, y=130)
-
 e_cal = DateEntry(frameMeio, width=12, background='darkblue', foreground='white', borderwidth=2, year=2024)
 e_cal.place(x=130, y=131) 
+
+l_valor = Label(frameMeio, text="Marca/Modelo", height=1, anchor=NW, font=('Ivy 10 bold'), bg=co1, fg=co4)
+l_valor.place(x=10, y=160)
+e_valor = Entry(frameMeio, width=30, justify='left', relief="solid")
+e_valor.place(x=130, y=161)
+
+l_serial = Label(frameMeio, text="Número de série", height=1, anchor=NW, font=('Ivy 10 bold'), bg=co1, fg=co4)
+l_serial.place(x=10, y=190)
+e_serial = Entry(frameMeio, width=30, justify='left', relief="solid")
+e_serial.place(x=130, y=191)
+
+# Botões ----------------------------------------
+l_carregar = Label(frameMeio, text='Imagem do item', height=1, anchor=NW, font=('Ivy 10 bold'), bg=co1, fg=co4)
+l_carregar.place(x=10, y=220)
+
+botao_carregar = Button(frameMeio, compound=CENTER, anchor=CENTER, text="carregar".upper(), width=30, overrelief=RIDGE, font=('ivy 8'), bg=co1, fg=co0)
+botao_carregar.place(x=130, y=221)
+
+# Botão inserir
+img_add = Image.open('')
+
 
 
 
 # Frame Baixo -----------------------------------
 
 janela.mainloop()
-
-
