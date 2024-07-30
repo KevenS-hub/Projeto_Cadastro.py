@@ -75,6 +75,12 @@ l_model.place(x=10, y=100)
 e_model = Entry(frameMeio, width=30, justify='left', relief="solid")
 e_model.place(x=130, y=101)
 
+l_cal = Label(frameMeio, text="Data da compra", height=1, anchor=NW, font=('Ivy 10 bold'), bg=co1, fg=co4)
+l_cal.place(x=10, y=130)
+
+e_cal = DateEntry(frameMeio, width=12, background='darkblue', foreground='white', borderwidth=2, year=2024)
+e_cal.place(x=130, y=131) 
+
 
 
 # Frame Baixo -----------------------------------
