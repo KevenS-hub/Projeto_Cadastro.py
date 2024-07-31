@@ -94,18 +94,58 @@ e_serial = Entry(frameMeio, width=30, justify='left', relief="solid")
 e_serial.place(x=130, y=191)
 
 # Botões ----------------------------------------
+
+# Botão carregar
 l_carregar = Label(frameMeio, text='Imagem do item', height=1, anchor=NW, font=('Ivy 10 bold'), bg=co1, fg=co4)
 l_carregar.place(x=10, y=220)
-
-botao_carregar = Button(frameMeio, compound=CENTER, anchor=CENTER, text="carregar".upper(), width=30, overrelief=RIDGE, font=('ivy 8'), bg=co1, fg=co0)
+botao_carregar = Button(frameMeio, compound=CENTER, anchor=CENTER, text="carregar".upper(), width=29, overrelief=RIDGE, font=('ivy 8'), bg=co1, fg=co0)
 botao_carregar.place(x=130, y=221)
 
 # Botão inserir
-img_add = Image.open('')
+img_add = Image.open('midias/adicionar.png')
+img_add = img_add.resize((20,20))
+img_add = ImageTk.PhotoImage(img_add)
+
+
+botao_inserir = Button(frameMeio, image=img_add, width=95, text=' Adicionar'.upper(), compound=LEFT, anchor=NW, overrelief=RIDGE, font=('Ivy 8'), bg=co1, fg=co0)
+botao_inserir.place(x=330, y=10)
+
+
+# Botão Atualizar
+img_update = Image.open('midias/atualizar.png')
+img_update = img_update.resize((20,20))
+img_update = ImageTk.PhotoImage(img_update)
+
+botao_update = Button(frameMeio, image=img_update, width=95, text=' Atualizar'.upper(), compound=LEFT, anchor=NW, overrelief=RIDGE, font=('Ivy 8'), bg=co1, fg=co0)
+botao_update.place(x=330, y=50)
+
+
+# Botão Deletar
+img_delete = Image.open('midias/deletar.png')
+img_delete = img_delete.resize((20,20))
+img_delete = ImageTk.PhotoImage(img_delete)
+
+botao_update = Button(frameMeio, image=img_delete, width=95, text=' Deletar'.upper(), compound=LEFT, anchor=NW, overrelief=RIDGE, font=('Ivy 8'), bg=co1, fg=co0)
+botao_update.place(x=330, y=90)
+
+
+# Botão Ver Imagem
+img_item = Image.open('midias/item.png')
+img_item = img_item.resize((20,20))
+img_item = ImageTk.PhotoImage(img_item)
+
+botao_item = Button(frameMeio, image=img_item, width=95, text=' Ver Item'.upper(), compound=LEFT, anchor=NW, overrelief=RIDGE, font=('Ivy 8'), bg=co1, fg=co0)
+botao_item.place(x=330, y=220)
+
+
+# Labels quantidade total e valores
+l_total = Label(frameMeio, text="", width=14, height=2, anchor=CENTER, font=('Ivy 17 bold'), bg=co7, fg=co1)
+l_total.place(x=450, y=17)
+
+l_total = Label(frameMeio, text='  Valor Total de todos os itens  ', height=1, anchor=NW, font=('Ivy 10 bold'), bg=co7, fg=co1)
+l_total.place(x=450, y=12)
 
 
 
-
-# Frame Baixo -----------------------------------
 
 janela.mainloop()
