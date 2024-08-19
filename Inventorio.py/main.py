@@ -1,10 +1,14 @@
 from tkinter import *
-from tkinter import Tk, StringVar, ttk
+from tkinter import Tk, StringVar, ttk, messagebox
+from tkinter import filedialog as fd
 
 from PIL import Image, ImageTk
 
 from tkcalendar import Calendar, DateEntry
 from datetime import date
+
+# dados importados 'view'
+from view import *
 
 # Cores
 
@@ -39,6 +43,63 @@ frameMeio.grid(row=1, column=0, pady=1, padx=0, sticky=NSEW)
 
 frameBaixo = Frame(janela, width=1043, height=300, bg=co1, pady=20, relief=FLAT)
 frameBaixo.grid(row=2, column=0, pady=0, padx=0, sticky=NSEW)
+
+
+# Criando funções -------------------------------
+global tree
+
+# Função inserir
+def inserir():
+    global  imagem, image_string, l_imagem
+
+    nome = e_nome.get()
+    local = e_local.get()
+    descricao = e_descricao.get()
+    model = e_model.get()
+    data = e_cal.get()
+    valor = e_valor.get()
+    serie = e_serial.get()
+    imagem = image_string
+
+    lista_inserir = [nome, local, descricao, model, data, valor, serie, imagem]
+
+    for i in lista_inserir:
+        if i=='':
+            messagebox.showerror('Erro', 'Preencha todos os campos')
+            return
+    inserir_form(lista_inserir)
+
+    messagebox.showinfo('Sucesso', 'Os dados foram inseridos com sucesso!')
+
+    nome.delete(0, 'end')
+    local.delete(0, 'end')
+    descricao.delete(0, 'end') 
+    model.delete(0, 'end') 
+    data.delete(0, 'end') 
+    valor.delete(0, 'end')
+    serie.delete(0, 'end')
+
+    for widget in frameMeio.winfo_children():
+        widget.destroy()
+
+    mostrar()
+
+
+# Função pra escolher imagem
+global imagem, image_string, l_imagem
+
+def escolher_imagem():
+    global imagem, image_string, l_imagem
+
+    imagem = fd.askopenfilename()
+    image_string = imagem
+
+    imagem = Image.open(imagem)
+    imagem = imagem.resize((170,170))
+    imagem = ImageTk.PhotoImage(imagem)
+
+    l_imagem = Label(frameCima, image=imagem, bg=co1, fg=co4)
+    l_imagem.place(x=700, y=10)
 
 # Frames Cima -----------------------------------
 
@@ -107,7 +168,7 @@ img_add = img_add.resize((20,20))
 img_add = ImageTk.PhotoImage(img_add)
 
 
-botao_inserir = Button(frameMeio, image=img_add, width=95, text=' Adicionar'.upper(), compound=LEFT, anchor=NW, overrelief=RIDGE, font=('Ivy 8'), bg=co1, fg=co0)
+botao_inserir = Button(frameMeio, command=inserir, image=img_add, width=95, text=' Adicionar'.upper(), compound=LEFT, anchor=NW, overrelief=RIDGE, font=('Ivy 8'), bg=co1, fg=co0)
 botao_inserir.place(x=330, y=10)
 
 
@@ -157,8 +218,6 @@ def mostrar():
     tabela_head = ['#Item','Nome',  'Sala/Área','Descrição', 'Marca/Modelo', 'Data da compra','Valor da compra', 'Número de série']
 
     lista_itens = []
-
-    global tree
 
     tree = ttk.Treeview(frameBaixo, selectmode="extended",columns=tabela_head, show="headings")
 
